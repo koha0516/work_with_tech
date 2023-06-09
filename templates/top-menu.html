@@ -13,7 +13,7 @@
 </header>
 <div class="contents">
     <div class="upper_contents">
-        <div id="clock">9<span id="clock_blink">:</span>00</div>
+      <div id="clock"><span id="now_hour"></span><span id="clock_blink">:</span><span id="now_min"></span></div>
       <a href="{{ url_for('employee.employee_login') }}"><button id="apply_button">apply</button></a>
     </div>
     <div class="lower_contents">
@@ -27,5 +27,6 @@
         </div>
     </div>
 </div>
+<script src="{{ url_for('static', filename='js/top_menu.js') }}"></script>
 </body>
 </html>
