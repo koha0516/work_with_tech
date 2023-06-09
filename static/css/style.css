@@ -4,10 +4,16 @@ html {
   height: 100%;
 
   background-color: #DEDEE5;
-  background-image: repeating-linear-gradient(to bottom, #F7F7F7, #F7F7F7, 1px, transparent 0, transparent 32px),
-                    repeating-linear-gradient(to right,#F7F7F7, #F7F7F7, 1px, transparent 0, transparent 32px);
+    background-image: repeating-linear-gradient(to bottom, #F7F7F7, #F7F7F7, transparent 1px, transparent 32px),
+                    repeating-linear-gradient(to right,#F7F7F7, #F7F7F7, transparent 1px, transparent 32px);
+
   font-family: 'Hyperspace Race Capsule';
   color: #232423;
+}
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 
@@ -22,4 +28,17 @@ header {
   line-height: 80px;
 
   font-size: 50px;
+  color: #F7F7F7;
 }
+
+
+.small_rink{
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 16px;
+  color: #3766FF;
+}
+

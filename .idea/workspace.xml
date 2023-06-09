@@ -5,12 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48ad031c-4274-43bd-b38a-a4d10cb14dd0" name="変更" comment="">
+      <change afterPath="$PROJECT_DIR$/static/css/top_menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/employee/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employee/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/employee/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employee/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/top-menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/top-menu.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -35,21 +43,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/koharu/PycharmProjects/最終課題/work_with_tech&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Flask サーバー.Flask (app.py)">
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\koharu\PycharmProjects\最終課題\work_with_tech" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript デバッグ.login.html">
+    <configuration name="login.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/app.py/templates/employee/login.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="top-menu.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/app.py/templates/top-menu.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="Flask (app.py)" type="Python.FlaskServer" temporary="true" nameIsGenerated="true">
       <module name="work_with_tech" />
       <option name="target" value="$PROJECT_DIR$/app.py" />
@@ -82,7 +102,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Flask サーバー.Flask (app.py)" />
+        <item itemvalue="JavaScript デバッグ.login.html" />
+        <item itemvalue="JavaScript デバッグ.top-menu.html" />
       </list>
     </recent_temporary>
   </component>
@@ -94,14 +115,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1686193695201</updated>
-      <workItem from="1686193696904" duration="2679000" />
+      <workItem from="1686193696904" duration="3015000" />
+      <workItem from="1686284175526" duration="460000" />
+      <workItem from="1686284885643" duration="327000" />
+      <workItem from="1686296434405" duration="32000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/app_py$Flask__app_py_.coverage" NAME="Flask (app.py) のカバレッジ結果" MODIFIED="1686196384312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
