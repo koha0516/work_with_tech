@@ -1,10 +1,16 @@
-from flask import Flask,render_template,Blueprint
+from flask import Flask,render_template
+from employee import employee_bp
+from admin import admin_bp
 
 app = Flask(__name__)
 
+app.register_blueprint(employee_bp)
+app.register_blueprint(admin_bp)
+
+
 
 @app.route('/')
-def hello_world():  # put application's code here
+def top_menu():  # put application's code here
     return render_template('top-menu.html')
 
 
