@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
-      <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/top_menu.css')}}">
 </head>
 <body>
@@ -14,7 +14,7 @@
 <div class="contents">
     <div class="upper_contents">
         <div id="clock">9<span id="clock_blink">:</span>00</div>
-        <button id="apply_button">apply</button>
+      <a href="{{ url_for('employee.employee_login') }}"><button id="apply_button">apply</button></a>
     </div>
     <div class="lower_contents">
         <div class="lower_left_contents">
