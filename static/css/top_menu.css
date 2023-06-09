@@ -1,0 +1,131 @@
+.contents{
+    display: grid;
+    grid-template-rows:1fr 2fr;
+}
+.upper_contents{
+    grid-row: 1/2;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+}
+#clock {
+    text-align: center;
+    grid-column: 2/3;
+
+    font-size: 150px;
+
+    color: #4400FB;
+    font-weight: lighter;
+}
+
+
+#clock_blink {
+    position: relative;
+    top: -20px;
+    animation: blink-fast 1s linear infinite;
+}
+@keyframes blink-fast {
+    20% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 1;
+    }
+}
+
+#apply_button {
+    grid-column: 3/4;
+    margin-top: 20px;
+    margin-left: 40px;
+    width: 380px;
+    height: 80px;
+    border-radius: 50px;
+    background-image: linear-gradient(150deg, rgba(36, 252, 146, 1), rgba(73, 178, 190, 1) 50%, rgba(129, 67, 255, 1));
+    font-size: 40px;
+    color: #F7F7F7;
+    transition: all .2s;
+}
+
+#apply_button:hover {
+    position: relative;
+    top: -3px;
+    box-shadow: 0 2px 3px rgba(11, 99, 87, 0.85);
+}
+
+
+.lower_contents{
+    grid-row: 2/3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.lower_left_contents {
+    grid-column: 1/2;
+}
+
+.lower_right_contents {
+    grid-column: 2/3;
+}
+
+#begin_button,#bgn_rest_button {
+    display: block;
+    margin-left: 240px;
+    width: 380px;
+    border-radius: 50px;
+    background-image: linear-gradient(0deg, rgba(0, 222, 222, 1) 5%, rgba(0, 183, 240, 1) 55%, rgba(0, 68, 255, 1));
+    color: #F7F7F7;
+    transition: all .2s;
+}
+#begin_button:hover {
+    position: relative;
+    top: -3px;
+    box-shadow: 0 2px 3px rgba(11, 99, 87, 0.85);
+}
+#bgn_rest_button:hover {
+    position: relative;
+    top: -3px;
+    box-shadow: 0 2px 3px rgba(11, 99, 87, 0.85);
+}
+
+#begin_button {
+    height: 200px;
+    font-size: 80px;
+}
+
+#bgn_rest_button {
+    height: 80px;
+    margin-top: 40px;
+    font-size: 40px;
+}
+
+#finish_button,#fin_rest_button {
+    display: block;
+    margin-left: 53px;
+    border-radius: 50px;
+    width: 380px;
+    background-image: linear-gradient(0deg, rgba(129, 67, 255, 1), rgba(192, 76, 209, 1) 32%, rgba(214, 79, 193, 1) 65%, rgba(255, 85, 164, 1) 95%);
+    color: #F7F7F7;
+    transition: all .2s;
+}
+
+#finish_button {
+    height: 200px;
+    font-size: 80px;
+}
+#finish_button:hover {
+    position: relative;
+    top: -3px;
+    box-shadow: 0 2px 3px rgba(138, 0, 104, 0.85);
+}
+
+#fin_rest_button {
+    margin-top: 40px;
+    height: 80px;
+    font-size: 40px;
+}
+
+#fin_rest_button:hover {
+    position: relative;
+    top: -3px;
+    box-shadow: 0 2px 3px rgba(138, 0, 104, 0.85);
+}
+

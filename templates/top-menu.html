@@ -1,14 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+      <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/top_menu.css')}}">
 </head>
 <body>
-<h1>topメニューです</h1>
-
+<header>
+    <h1 id="header_title">work_with_tech</h1>
+</header>
+<div class="contents">
+    <div class="upper_contents">
+        <div id="clock">9<span id="clock_blink">:</span>00</div>
+        <button id="apply_button">apply</button>
+    </div>
+    <div class="lower_contents">
+        <div class="lower_left_contents">
+            <button id="begin_button">Begin</button>
+            <button id="bgn_rest_button">Bgn_rest</button>
+        </div>
+        <div class="lower_right_contents">
+            <button id="finish_button">Finish</button>
+            <button id="fin_rest_button">Fin_rest</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
