@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/admin_style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/admin_apply.css')}}">
+</head>
+<body>
+<header>
+  <h1 id="header_title">work_with_tech</h1>
+</header>
+<div class="contents">
+  <div class="main_contents">
+    <div id="overtime_application_form">
+      <div id="title">残業申請書</div>
+      <button id="complete">complete</button>
+      <div class="profile">
+        <div id="name">氏名 : 山田太郎</div>
+        <div id="department">部署 : システム部</div>
+        <div id="position_name">役職名 :</div>
+      </div>
+      <div class="overtime">
+        <div class="time">
+          　残業時間 : 2<br>
+          　休憩時間 : 0<br>
+          実残業時間 : 2<br>
+        </div>
+        <div class="work">
+          <div class="label">業務内容</div>
+          <div class="work_contents">バグ修正</div>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason_title">申請理由</div>
+        <div id="overtime_reason"></div>
+
+      </div>
+      <table id="apply">
+        <tr>
+          <th>承認</th>
+          <th>非承認</th>
+          <th>非承認の理由</th>
+          <th>所属長</th>
+          <th>管理者</th>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" id="anId1" class="wskCheckbox" />
+            <label class="wskLabel" for="anId1"></label>
+          </td>
+          <td>
+            <input type="checkbox" id="anId2" class="wskCheckbox" />
+            <label class="wskLabel" for="anId2"></label>
+          </td>
+          <td id="re"><label>
+            <textarea name="re"></textarea>
+          </label></td>
+          <td>
+            <input type="checkbox" id="anId3" class="wskCheckbox" />
+            <label class="wskLabel" for="anId3"></label>
+          </td>
+          <!--        ハンコを押すシステムを作成　valueは社員番号に対応するハンコを押す            -->
+          <td>
+            <input type="checkbox" id="anId4" class="wskCheckbox" />
+            <label class="wskLabel" for="anId4"></label>
+          </td>
+          <!--        ハンコを押すシステムを作成　社員番号に対応するハンコを押す            -->
+
+        </tr>
+      </table>
+    </div>
+  </div>
+  <aside>
+    <ul>
+      <li class="nav_list"><a>Menu</a></li>
+      <li class="nav_list"><a>Employee</a></li>
+      <li class="nav_list"><a>Apply</a></li>
+      <li class="nav_list"><a>Reports</a></li>
+      <li class="nav_list"><a>Payroll</a></li>
+    </ul>
+  </aside>
+</div>
+
+<script src="{{ url_for('static', filename='js/checkbox.js') }}"></script>
+</body>
+</html>
