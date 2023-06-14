@@ -3,8 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  {% block css %}
+  <!-- 独自のcssを埋め込む -->
+  {% endblock %}
 </head>
 <body>
-
+<header>
+  <h1 id="header_title">work_with_tech</h1>
+</header>
+  {% block main_contents %}
+  <!-- ページのメインコンテンツを埋め込む -->
+  {% endblock %}
 </body>
 </html>
