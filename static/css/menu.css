@@ -1,0 +1,47 @@
+.contents{
+    display: grid;
+    grid-template-columns: auto 120px;
+}
+#menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#menu-title {
+    margin: 20px auto auto;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 64px;
+    color: #40C29F;
+}
+
+.menu_list {
+    font-family: 'Hyperspace Race';
+    font-size: 64px;
+}
+
+.left_contents {
+    position: relative;
+    left: 300px;
+}
+.right_contents {
+    position: relative;
+    left: 100px;
+}
+
+ul {
+    padding-left:0;
+}
+
+li {
+    list-style: none;
+    margin-bottom: 5px;
+}
+
+a {
+    color: #232423;
+}
+
+a:hover {
+    color: #4400FB;
+}
