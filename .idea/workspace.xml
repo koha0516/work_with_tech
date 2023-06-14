@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48ad031c-4274-43bd-b38a-a4d10cb14dd0" name="変更" comment="">
+      <change afterPath="$PROJECT_DIR$/static/css/admin_menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/menu.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/employee/menu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/apply.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/apply.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/top-menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/top-menu.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +64,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\koharu\PycharmProjects\最終課題\work_with_tech\templates\admin" />
-      <recent name="C:\Users\koharu\PycharmProjects\最終課題\work_with_tech\static\js" />
+      <recent name="C:\Users\koharu\PycharmProjects\最終課題\work_with_tech\templates\employee" />
       <recent name="C:\Users\koharu\PycharmProjects\最終課題\work_with_tech\static\css" />
+      <recent name="C:\Users\koharu\PycharmProjects\最終課題\work_with_tech\static\js" />
       <recent name="C:\Users\koharu\PycharmProjects\最終課題\work_with_tech" />
     </key>
   </component>
@@ -126,7 +133,9 @@
       <workItem from="1686296434405" duration="32000" />
       <workItem from="1686538832780" duration="681000" />
       <workItem from="1686702229332" duration="2005000" />
-      <workItem from="1686712704397" duration="163000" />
+      <workItem from="1686712704397" duration="233000" />
+      <workItem from="1686714226936" duration="1164000" />
+      <workItem from="1686717341511" duration="607000" />
     </task>
     <servers />
   </component>
@@ -134,6 +143,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/app_py$Flask__app_py_.coverage" NAME="Flask (app.py) のカバレッジ結果" MODIFIED="1686702750997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/app_py$Flask__app_py_.coverage" NAME="Flask (app.py) のカバレッジ結果" MODIFIED="1686717866570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
