@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-  <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
-  <link rel="stylesheet" href="{{url_for('static', filename='css/admin_style.css')}}">
-  <link rel="stylesheet" href="{{url_for('static', filename='css/admin_apply.css')}}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/normalize.css') }}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/admin_style.css') }}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/admin_apply.css') }}">
 </head>
 <body>
 <header>
@@ -37,40 +40,43 @@
         <div id="overtime_reason"></div>
 
       </div>
-      <table id="apply">
-        <tr>
-          <th>承認</th>
-          <th>非承認</th>
-          <th>非承認の理由</th>
-          <th>所属長</th>
-          <th>管理者</th>
-        </tr>
-        <tr>
-          <form action="#" method="post" id="form">
+      <form action="#" method="post" id="form">
+        <table id="apply">
+          <tr>
+            <th>承認</th>
+            <th>非承認</th>
+            <th>非承認の理由</th>
+            <th>所属長</th>
+            <th>管理者</th>
+          </tr>
+          <tr>
             <td>
-              <input type="checkbox" id="anId1" class="wskCheckbox" name="apply" />
+              <input type="checkbox" id="anId1" class="wskCheckbox"
+                     name="apply"/>
               <label class="wskLabel" for="anId1"></label>
             </td>
             <td>
-              <input type="checkbox" id="anId2" class="wskCheckbox" name="no_apply"/>
+              <input type="checkbox" id="anId2" class="wskCheckbox"
+                     name="no_apply"/>
               <label class="wskLabel" for="anId2"></label>
             </td>
             <td id="re"><label>
               <textarea name="re"></textarea>
             </label></td>
             <td>
-              <input type="checkbox" id="anId3" class="wskCheckbox" name="boss" />
+              <input type="checkbox" id="anId3" class="wskCheckbox"
+                     name="boss"/>
               <label class="wskLabel" for="anId3"></label>
             </td>
             <!--        ハンコを押すシステムを作成　valueは社員番号に対応するハンコを押す            -->
             <td>
-              <input type="checkbox" id="anId4" class="wskCheckbox" name="top" />
+              <input type="checkbox" id="anId4" class="wskCheckbox" name="top"/>
               <label class="wskLabel" for="anId4"></label>
             </td>
-          </form>
+          </tr>
 
-        </tr>
-      </table>
+        </table>
+      </form>
     </div>
   </div>
   <aside>
