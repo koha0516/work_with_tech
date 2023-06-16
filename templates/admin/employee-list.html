@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/admin_style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/employee_list.css')}}">
+</head>
+<body>
+<header>
+  <h1 id="header_title">work_with_tech</h1>
+</header>
+<div class="contents">
+  <div class="main_contents">
+    <div id="classify">
+      <div id="departments">
+        <div class="classify_title">belong_to</div>
+        <ul class="cl_list">
+          <li class="department"><a>営業本部</a></li>
+          <li class="department"><a>営業部</a></li>
+          <li class="department"><a>営業一課</a></li>
+          <li class="department"><a>営業二課</a></li>
+          <li class="department"><a>MKT部</a></li>
+          <li class="department"><a>製造管理本部</a></li>
+          <li class="department"><a>製造部</a></li>
+          <li class="department"><a>管理部</a></li>
+        </ul>
+      </div>
+      <div id="positions">
+        <div class="classify_title">position</div>
+        <ul class="cl_list">
+          <li class="position"><a>パート</a></li>
+          <li class="position"><a>派遣</a></li>
+          <li class="position"><a>正社員</a></li>
+          <li class="position"><a>管理職</a></li>
+          <li class="position"><a>その他</a></li>
+        </ul>
+      </div>
+<!--      <div id="search">-->
+<!--        <form action="#" method="get">-->
+<!--          <input type="text" name="search"><br>-->
+<!--          <button type="submit">検索マーク</button>-->
+<!--        </form>-->
+<!--      </div>-->
+    </div>
+    <div id="employees">
+      <div id="title">従業員リスト</div>
+      <button id="back_to_home">Back</button>
+
+      <table>
+        <tr>
+          <th>S/N</th>
+          <th>名前</th>
+          <th>所属</th>
+          <th>役職</th>
+          <th>備考</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>山田太郎</td>
+          <td>製造部/製造技術課</td>
+          <td>一般</td>
+          <td id="remarks">〇〇プロジェクトリーダー</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <aside>
+    <ul>
+      <li class="nav_list"><a>Menu</a></li>
+      <li class="nav_list"><a>Employee</a></li>
+      <li class="nav_list"><a>Apply</a></li>
+      <li class="nav_list"><a>Reports</a></li>
+      <li class="nav_list"><a>Payroll</a></li>
+    </ul>
+  </aside>
+</div>
+
+</body>
+</html>
