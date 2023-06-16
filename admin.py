@@ -13,3 +13,7 @@ def admin_apply():
 @admin_bp.route('menu')
 def admin_menu():
     return render_template('admin/menu.html')
+
+@admin_bp.route('employees')
+def admin_employee_list():
+    return render_template('admin/employee-list.html')
