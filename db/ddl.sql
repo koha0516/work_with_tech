@@ -17,7 +17,7 @@ CREATE TABLE employees
     address         varchar(64) not null,
     salt            varchar(20) not null,
     password        varchar(64) not null,
-    join_at         timestamp,
+    join_at         date,
     create_at       timestamp,
     primary key (employee_id),
     unique (employee_id)
