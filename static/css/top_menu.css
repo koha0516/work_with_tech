@@ -129,3 +129,12 @@
     box-shadow: 0 2px 3px rgba(138, 0, 104, 0.85);
 }
 
+.small_rink{
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 16px;
+  color: #3766FF;
+}

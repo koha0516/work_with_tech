@@ -19,9 +19,9 @@ def admin_menu():
 def admin_employee_list():
     return render_template('admin/employee-list.html')
 
-# @admin_bp.route('register_employee_form')
-# def register_employee_form():
-#     return render_template('admin/register-employee.html')
+@admin_bp.route('register_employee_form')
+def register_employee_form():
+    return render_template('admin/register-employee-form.html')
 
 # @admin_bp.route('register_employee_exe', methods=['POST'])
 # def register_employee_exe():

@@ -1,7 +1,6 @@
 /* 背景色と格子模様を設定 */
 html {
   width: 100%;
-  height: 100%;
 
   background-color: #232423;
     background-image: repeating-linear-gradient(to bottom, #525557, #525557, transparent 1px, transparent 32px),
