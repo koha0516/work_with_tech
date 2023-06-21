@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/top_menu.css')}}">
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/normalize.css') }}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/top_menu.css') }}">
 </head>
 <body>
 <header>
-    <h1 id="header_title">work_with_tech</h1>
+  <h1 id="header_title">work_with_tech</h1>
+  <ul>
+    <li><a href="{{url_for('admin/admin_login')}}">admin</a></li>
+  </ul>
 </header>
 <div class="contents">
-    <div class="upper_contents">
-      <div id="clock"><span id="now_hour"></span><span id="clock_blink">:</span><span id="now_min"></span></div>
-      <a href="{{ url_for('employee.employee_login') }}"><button id="apply_button">Login</button></a>
+  <div class="upper_contents">
+    <div id="clock"><span id="now_hour"></span><span
+        id="clock_blink">:</span><span id="now_min"></span></div>
+    <a href="{{ url_for('employee.employee_login') }}">
+      <button id="apply_button">Login</button>
+    </a>
+  </div>
+  <div class="lower_contents">
+    <div class="lower_left_contents">
+      <button id="begin_button">Begin</button>
+      <button id="bgn_rest_button">Bgn_rest</button>
     </div>
-    <div class="lower_contents">
-        <div class="lower_left_contents">
-            <button id="begin_button">Begin</button>
-            <button id="bgn_rest_button">Bgn_rest</button>
-        </div>
-        <div class="lower_right_contents">
-            <button id="finish_button">Finish</button>
-            <button id="fin_rest_button">Fin_rest</button>
-        </div>
+    <div class="lower_right_contents">
+      <button id="finish_button">Finish</button>
+      <button id="fin_rest_button">Fin_rest</button>
     </div>
+  </div>
 </div>
 <script src="{{ url_for('static', filename='js/top_menu.js') }}"></script>
 </body>

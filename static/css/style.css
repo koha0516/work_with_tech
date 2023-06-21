@@ -22,6 +22,8 @@ header {
   width: 100%;
 
   background-image: linear-gradient(150deg, rgba(74, 10, 249, 1), rgba(76, 178, 210, 1) 50%, rgba(145, 255, 201, 1));
+  display: flex;
+  justify-content: center;
 }
 
 #header_title {
