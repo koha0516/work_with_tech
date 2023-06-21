@@ -7,8 +7,8 @@ CREATE TABLE departments
 CREATE TABLE employees
 (
     employee_id     int not null,
-    department_id   int not null,
     name            varchar(64) not null,
+    department_id   int not null,
     birth           varchar(32) not null,
     gender          varchar(64) not null,
     mail            varchar(64) not null,

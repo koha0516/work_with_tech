@@ -1,24 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/admin_style.css">
+  <link rel="stylesheet" href="css/register_employee.css">
 </head>
+
 <body>
+<header>
+  <h1 id="header_title">work_with_tech</h1>
+</header>
+<div class="contents">
+  <div class="main_contents">
+    <form action="#" method="get">
+      <h2 id="form-title">Register_Employee</h2>
+      <div class="input_box">
+        <span class="input_label">Employee_ID</span><br>
+        <input type="text" name="employee_id"><br>
+      </div>
+      <div class="input_box">
+        <span class="input_label">name</span><br>
+        <input type="text" name="name"><br>
+      </div>
+      <div class="select_box">
+        <span class="input_label">department</span><br>
+        <select name="department">
+          <option value="101">営業一課</option>
+          <option value="201">マーケティング部</option>
+          <option value="111">品質管理課</option>
+        </select>
+      </div>
+      <div class="input_box">
+        <span class="input_label">birth</span><br>
+        <lavel><input type="date" name="birth"></lavel><br>
+      </div>
+      <div class="input_box">
+        <span class="input_label">gender</span><br>
+        <input type="radio" name="gender" value="male" checked>male
+        <input type="radio" name="gender" value="female">female
+      </div>
+      <div class="input_box">
+        <span class="input_label">mail</span><br>
+        <input type="text" name="mail"><br>
+      </div>
+      <div class="input_box">
+        <span class="input_label">tel</span><br>
+        <input type="text" name="tel"><br>
+      </div>
+      <div class="input_box">
+        <span class="input_label">post_code</span><br>
+        <input type="text" name="post_code"><br>
+      </div>
+      <div class="input_box">
+        <span class="input_label">address</span><br>
+        <input type="text" name="address"><br>
+      </div>
+      <div class="input_box">
+        <span class="input_label">joining_day</span><br>
+        <lavel><input type="date" name="join_at"></lavel><br>
+      </div>
 
-{#性別用ラジオボタン#}
-<fieldset class="radio-002">
-    <label>
-        <input type="radio" name="radio-002" checked/>
-        radio1
-    </label>
-    <label>
-        <input type="radio" name="radio-002"/>
-        radio2
-    </label>
 
-</fieldset>
+      <button id="submit_button" type="submit">Confirm</button>
+      <a href="#" class="small_rink">Back</a>
+    </form>
+  </div>
+  <aside>
+    <ul>
+      <li class="nav_list"><a>Menu</a></li>
+      <li class="nav_list"><a>Employee</a></li>
+      <li class="nav_list"><a>Apply</a></li>
+      <li class="nav_list"><a>Reports</a></li>
+      <li class="nav_list"><a>Payroll</a></li>
+    </ul>
+  </aside>
+</div>
 
-
+<script src="./js/checkbox.js"></script>
 </body>
 </html>
