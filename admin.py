@@ -23,6 +23,12 @@ def admin_employee_list():
 def register_employee_form():
     return render_template('admin/register-employee-form.html')
 
+@admin_bp.route('register_employee_confirm', methods=['POST'])
+def register_employee_confirm():
+    return render_template('admin/register_employee_confirm.html')
+
+
+
 # @admin_bp.route('register_employee_exe', methods=['POST'])
 # def register_employee_exe():
 #     # 値を受け取る

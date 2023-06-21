@@ -29,6 +29,11 @@ form {
   font-size: 48px;
 }
 
+.select_box{
+    margin: 30px auto auto;
+  text-align: left;
+}
+
 select {
   width: 200px;
   margin: 30px auto auto;
@@ -52,6 +57,7 @@ select:focus {
 
 .input_label {
   font-size: 20px;
+  color: #4400FB;
 }
 
 input[type=text] {
