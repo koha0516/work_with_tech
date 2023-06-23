@@ -25,55 +25,31 @@
         <input type="text" name="name"><br>
       </div>
 
-      <div class="select_box">
-        <span class="input_label">department</span>
-        <select name="department">
-          <option value="101">営業一課</option>
-          <option value="201">マーケティング部</option>
-          <option value="111">品質管理課</option>
-        </select>
-      </div>
-
-      <div class="input_box">
-        <span class="input_label">birth</span><br>
-        <lavel><input type="date" name="birth"></lavel><br>
-      </div>
-
-      <div class="input_box">
-        <span class="input_label">gender</span><br>
-        <input type="radio" name="gender" value="male" checked>male
-        <input type="radio" name="gender" value="female">female
-      </div>
-
       <div class="input_box">
         <span class="input_label">mail</span><br>
         <input type="text" name="mail"><br>
       </div>
 
-      <div class="input_box">
-        <span class="input_label">tel</span><br>
-        <input type="text" name="tel"><br>
+      <div class="select_box">
+        <span class="input_label">department</span><br>
+        <select name="department">
+          {%  for de in departments %}
+          <option value="{{ de[0] }}">{{ de[1] }}</option>
+          {% endfor %}
+        </select>
       </div>
 
-      <div class="input_box">
-        <span class="input_label">post_code</span><br>
-        <input type="text" name="post_code"><br>
+      <div class="select_box">
+        <span class="input_label">role</span><br>
+        <select name="role">
+          {%  for ro in roles %}
+          <option value="{{ ro[0] }}">{{ ro[1] }}</option>
+          {% endfor %}
+        </select>
       </div>
-
-      <div class="input_box">
-        <span class="input_label">address</span><br>
-        <input type="text" name="address"><br>
-      </div>
-
-      <div class="input_box">
-        <span class="input_label">joining_day</span><br>
-        <lavel><input type="date" name="join_at"></lavel><br>
-      </div>
-
 
       <button id="submit_button" type="submit">Confirm</button>
       <a href="#" class="small_rink">Back</a>
-
     </form>
   </div>
 
@@ -89,6 +65,5 @@
 
 </div>
 
-<script src="./js/checkbox.js"></script>
 </body>
 </html>

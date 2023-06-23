@@ -17,7 +17,7 @@ form {
   text-align: center;
 
   width: 800px;
-  height: 1000px;
+  height: 650px;
 
   background-color: rgba(255, 255, 255, 0.7);
   color: #232423;
@@ -30,8 +30,11 @@ form {
 }
 
 .select_box{
+    width: 280px;
+    display: block;
     margin: 30px auto auto;
-  text-align: left;
+    text-align: left;
+
 }
 
 select {
