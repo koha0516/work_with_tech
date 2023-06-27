@@ -65,6 +65,47 @@ def insert_login_info(employee_id, password):
     return count
 
 
+def fetch_all_employees():
+    sql = """
+        SELECT employee_id, employees.name, departments.name, roles.name FROM employees 
+        LEFT OUTER JOIN departments ON employees.department_id=departments.department_id
+        LEFT OUTER JOIN roles ON employees.role=roles.role_id;
+        """
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+
+        cursor.execute(sql)
+        employees = cursor.fetchall()
+    except:
+        return None
+    finally:
+        cursor.close()
+        connection.close()
+
+    return employees
+
+
+def fetch_employees_by_department(department_id):
+    sql = """
+            SELECT employee_id, employees.name, departments.name, roles.name FROM employees 
+            LEFT OUTER JOIN departments ON employees.department_id=departments.department_id
+            LEFT OUTER JOIN roles ON employees.role=roles.role_id WHERE employees.department_id=%s;
+            """
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+
+        cursor.execute(sql, (department_id,))
+        employees = cursor.fetchall()
+    except:
+        return None
+    finally:
+        cursor.close()
+        connection.close()
+    return employees
+
+
 # 部門一覧を取ってくる
 def fetch_departments():
     sql = "SELECT * FROM departments"

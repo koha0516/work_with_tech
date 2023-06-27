@@ -101,6 +101,12 @@ ul {
 li {
     list-style: none;
 }
+a {
+    color: #F7F7F7;
+}
+a:hover {
+    color: #4BE6C1;
+}
 
 
 

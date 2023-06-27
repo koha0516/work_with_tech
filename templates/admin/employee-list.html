@@ -17,14 +17,9 @@
       <div id="departments">
         <div class="classify_title">belong_to</div>
         <ul class="cl_list">
-          <li class="department"><a>営業本部</a></li>
-          <li class="department"><a>営業部</a></li>
-          <li class="department"><a>営業一課</a></li>
-          <li class="department"><a>営業二課</a></li>
-          <li class="department"><a>MKT部</a></li>
-          <li class="department"><a>製造管理本部</a></li>
-          <li class="department"><a>製造部</a></li>
-          <li class="department"><a>管理部</a></li>
+          {% for de in departments %}
+          <li class="department"><a href="{{ url_for('admin.admin_employee_list', department_id=de[0]) }}">{{ de[1] }}</a></li>
+          {% endfor %}
         </ul>
       </div>
       <div id="positions">
@@ -50,19 +45,21 @@
 
       <table>
         <tr>
-          <th>S/N</th>
+          <th>社員ID</th>
           <th>名前</th>
           <th>所属</th>
           <th>役職</th>
           <th>備考</th>
         </tr>
+        {% for emp in employees %}
         <tr>
-          <td>1</td>
-          <td>山田太郎</td>
-          <td>製造部/製造技術課</td>
-          <td>一般</td>
-          <td id="remarks">〇〇プロジェクトリーダー</td>
+          <td>{{ emp[0] }}</td>
+          <td>{{ emp[1] }}</td>
+          <td>{{ emp[2] }}</td>
+          <td>{{ emp[3] }}</td>
+          <td id="remarks">あとでemp[4]</td>
         </tr>
+        {% endfor %}
       </table>
     </div>
   </div>

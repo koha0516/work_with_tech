@@ -18,7 +18,13 @@ def admin_menu():
 
 @admin_bp.route('/employee-list')
 def admin_employee_list():
-    return render_template('admin/employee-list.html')
+    d_id = request.args.get('department_id')
+    if d_id:
+        employees = user_dao.fetch_employees_by_department(d_id)
+    else:
+        employees = user_dao.fetch_all_employees()
+    departments = user_dao.fetch_departments()
+    return render_template('admin/employee-list.html', employees=employees, departments = departments)
 
 @admin_bp.route('register_employee_form')
 def register_employee_form():
