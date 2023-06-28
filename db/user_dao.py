@@ -27,7 +27,7 @@ def register_employee(employee):
 
 
 # 従業員のログイン情報を登録する
-def get_salt():
+def generate_salt():
     charset = string.ascii_letters + string.digits
 
     salt = ''.join(random.choices(charset, k=30))
@@ -41,15 +41,14 @@ def get_hash(password, salt):
     return hashed_pw
 
 def insert_login_info(employee_id, password):
-    sql = "UPDATE employees SET salt=%s, password=$s WHERE employee_id=%s AND salt='0000' AND password='0000'"
+    sql = "UPDATE employees SET salt=%s, password=%s WHERE employee_id=%s AND salt='0000' AND password='0000'"
 
-    salt = get_salt()
+    salt = generate_salt()
     hashed_pw = get_hash(password, salt)
 
     try:
         connection = get_connection()
         cursor = connection.cursor()
-
         cursor.execute(sql, (salt, hashed_pw, employee_id))
 
         count = cursor.rowcount  # 更新件数を取得
@@ -63,6 +62,28 @@ def insert_login_info(employee_id, password):
         connection.close()
 
     return count
+
+
+def fetch_salt(employee_id):
+    sql = 'SELECT salt FROM employees WHERE employee_id = %s'
+
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute(sql, (employee_id,))
+        user = cursor.fetchone()
+
+        if user != None:
+            print(user)
+            salt = user[0]
+
+    except psycopg2.DatabaseError:
+        salt = 'error'
+    finally:
+        cursor.close()
+        connection.close()
+
+    return salt
 
 
 def fetch_all_employees():
@@ -139,3 +160,29 @@ def fetch_roles():
         connection.close()
 
     return roles
+
+
+def employee_login(employee_id, password):
+    sql = 'SELECT password, salt FROM employees WHERE employee_id = %s'
+    flg = False
+
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute(sql, (employee_id,))
+        employee = cursor.fetchone()
+
+        if employee != None:
+            salt = employee[1]
+
+            hashed_password = get_hash(password, salt)
+
+            if hashed_password == employee[0]:
+                flg = True
+    except psycopg2.DatabaseError:
+        flg = False
+    finally:
+        cursor.close()
+        connection.close()
+
+    return flg
