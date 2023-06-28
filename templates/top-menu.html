@@ -13,13 +13,13 @@
 <body>
 <header>
   <h1 id="header_title">work_with_tech</h1>
-  <a href="{{ url_for('admin.admin_login') }}">admin</a>
+  <a href="{{ url_for('admin.admin_login_form') }}">admin</a>
 </header>
 <div class="contents">
   <div class="upper_contents">
     <div id="clock"><span id="now_hour"></span><span
         id="clock_blink">:</span><span id="now_min"></span></div>
-      <a href="{{ url_for('employee.employee_login') }}">
+      <a href="{{ url_for('employee.employee_login_form') }}">
         <button id="apply_button">Login</button>
       </a>
   </div>

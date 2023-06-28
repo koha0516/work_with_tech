@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session
+from flask import Flask, render_template, session, redirect
 import random, string
 from employee import employee_bp
 from admin import admin_bp
@@ -14,6 +14,9 @@ app.register_blueprint(admin_bp)
 def top_menu():  # put application's code here
     return render_template('top-menu.html')
 
+def logout():
+    # ログアウト処理
+    return redirect('top_menu')
 
 if __name__ == '__main__':
     app.run(debug=True)
