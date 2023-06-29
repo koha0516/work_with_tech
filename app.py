@@ -14,8 +14,6 @@ app.register_blueprint(admin_bp)
 def top_menu():
     """
     ログイン前トップメニューに戻る。
-    このとき、ログアウト処理も行う
-    :return:
     """
     return render_template('top-menu.html')
 

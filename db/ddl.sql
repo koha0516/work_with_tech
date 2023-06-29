@@ -1,3 +1,4 @@
+-- 部署テーブル
 CREATE TABLE departments
 (
     department_id   varchar(32) not null unique,
@@ -20,6 +21,7 @@ INSERT INTO departments VALUES ('100', '営業本部'),
                             ('221', '品質管理課'),
                             ('222', '総務管理課');
 
+-- 役職テーブル
 CREATE TABLE roles
 (
     role_id     varchar(32) not null unique,
@@ -33,7 +35,7 @@ INSERT INTO roles VALUES ('01', '一般'),
                             ('05', '本部長'),
                             ('06', '取締役');
 
-
+-- 役職テーブル
 CREATE TABLE shift
 (
     employee_id     int not null,
@@ -42,7 +44,7 @@ CREATE TABLE shift
     primary key (employee_id, working_date)
 );
 
-
+-- 役職テーブル
 CREATE TABLE holiday
 (
     employee_id     int not null,
@@ -51,7 +53,7 @@ CREATE TABLE holiday
     primary key (employee_id, holiday)
 );
 
-
+--　役職テーブル
 CREATE TABLE employees
 (
     employee_id     varchar(64) not null,
@@ -66,4 +68,29 @@ CREATE TABLE employees
     primary key (employee_id),
     unique (employee_id)
 );
+
+
+CREATE TABLE work_time
+(
+    employee_id     varchar(64) not null,
+    working_date    date not null,
+    begin           time not null default '00:00',
+    finish          time not null default '00:00',
+    b_rest         time not null default '00:00',
+    f_rest         time not null default '00:00',
+    primary key (employee_id, working_date),
+    unique (employee_id)
+);
+
+
+CREATE TABLE over_time
+(
+    employee_id     varchar(64) not null,
+    working_date    date not null,
+    o_time          time not null default'00:00',
+    primary key (employee_id, working_date),
+    unique (employee_id)
+);
+
+
 
