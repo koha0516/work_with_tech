@@ -78,8 +78,7 @@ CREATE TABLE work_time
     finish          time not null default '00:00',
     b_rest         time not null default '00:00',
     f_rest         time not null default '00:00',
-    primary key (employee_id, working_date),
-    unique (employee_id)
+    primary key (employee_id, working_date)
 );
 
 
@@ -88,8 +87,16 @@ CREATE TABLE over_time
     employee_id     varchar(64) not null,
     working_date    date not null,
     o_time          time not null default'00:00',
-    primary key (employee_id, working_date),
-    unique (employee_id)
+    primary key (employee_id, working_date)
+);
+
+CREATE TABLE holiday
+(
+    employee_id     varchar(64) not null,
+    holiday         date not null,
+    start_period    date not null,
+    end_period      date not null,
+    primary key (employee_id, holiday)
 );
 
 
