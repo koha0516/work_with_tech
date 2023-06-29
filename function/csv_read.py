@@ -1,4 +1,6 @@
-# テストデータ挿入のための単独実行ファイルです。
+"""
+テストデータ挿入のための単独実行ファイルです。
+"""
 import psycopg2, os, random, csv
 
 uri = os.environ['DATABASE_URL']

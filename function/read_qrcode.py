@@ -1,40 +1,45 @@
 ﻿import cv2
 import time
 
-camera_id = 0
-delay = 1
-window_name = 'OpenCV QR Code'
+def read_qrcode():
+    """
+    PCのカメラを起動してQRコードを読み込む。
 
-qcd = cv2.QRCodeDetector()
-cap = cv2.VideoCapture(camera_id)
 
-str = ''
+    :return:
+    """
+    camera_id = 0
+    delay = 1
+    window_name = 'OpenCV QR Code'
 
-while True:
-    ret, frame = cap.read()
+    qcd = cv2.QRCodeDetector()
+    cap = cv2.VideoCapture(camera_id)
 
-    if ret:
-        ret_qr, decoded_info, points, _ = qcd.detectAndDecodeMulti(frame)
-        if ret_qr:
-            for s, p in zip(decoded_info, points):
-                if s:
-                    str=s
-                    color = (0, 255, 0)
-                    time.sleep(2)
-                    break
-                else:
-                    color = (0, 0, 255)
-                frame = cv2.polylines(frame, [p.astype(int)], True, color, 8)
-                if str:
-                    break
-        cv2.imshow(window_name, frame)
+    str = ''
 
-    if str:
-        break
-    if cv2.waitKey(delay) & 0xFF == ord('q'):
-        break
+    while True:
+        ret, frame = cap.read()
 
-cv2.destroyWindow(window_name)
+        if ret:
+            ret_qr, decoded_info, points, _ = qcd.detectAndDecodeMulti(frame)
+            if ret_qr:
+                for s, p in zip(decoded_info, points):
+                    if s:
+                        str=s
+                        color = (0, 255, 0)
+                        time.sleep(2)
+                        break
+                    else:
+                        color = (0, 0, 255)
+                    frame = cv2.polylines(frame, [p.astype(int)], True, color, 8)
+                    if str:
+                        break
+            cv2.imshow(window_name, frame)
 
-# 後で試す
-print(str)
+        if str:
+            break
+        if cv2.waitKey(delay) & 0xFF == ord('q'):
+            break
+
+    cv2.destroyWindow(window_name)
+    return str

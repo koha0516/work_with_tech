@@ -11,11 +11,20 @@ app.register_blueprint(admin_bp)
 
 
 @app.route('/')
-def top_menu():  # put application's code here
+def top_menu():
+    """
+    ログイン前トップメニューに戻る。
+    このとき、ログアウト処理も行う
+    :return:
+    """
     return render_template('top-menu.html')
 
 def logout():
-    # ログアウト処理
+    """
+    ログアウト処理を行う
+    :return:
+    """
+    session.pop('user', None)
     return redirect('top_menu')
 
 if __name__ == '__main__':

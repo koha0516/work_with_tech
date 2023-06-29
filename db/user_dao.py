@@ -2,11 +2,19 @@ import string, random, hashlib,psycopg2
 import os
 
 def get_connection():
+    """
+    DB接続を行う
+    """
     url = os.environ['DATABASE_URL']
     connection = psycopg2.connect(url)
     return connection
 # 従業員を登録する
 def register_employee(employee):
+    """
+    DBに対して従業員の登録を行う
+    :param employee:
+    :return:
+    """
     count=0
     sql = f"""INSERT INTO employees (employee_id, name, mail, department_id, role, salt, password, flg, create_at)
               VALUES (%s, %s, %s, %s, %s, '0000', '0000', 1, CURRENT_TIMESTAMP(0))"""
@@ -28,12 +36,18 @@ def register_employee(employee):
 
 # 従業員のログイン情報を登録する
 def generate_salt():
+    """
+    ソルトを生成する
+    """
     charset = string.ascii_letters + string.digits
 
     salt = ''.join(random.choices(charset, k=30))
     return salt
 
 def get_hash(password, salt):
+    """
+    パスワードをハッシュ化する。
+    """
     b_pw = bytes(password, 'utf-8')
     b_salt = bytes(salt, 'utf-8')
 
@@ -41,6 +55,12 @@ def get_hash(password, salt):
     return hashed_pw
 
 def insert_login_info(employee_id, password):
+    """
+    新しいパスワードとソルトをDBに登録する
+    :param employee_id:
+    :param password:
+    :return:
+    """
     sql = "UPDATE employees SET salt=%s, password=%s WHERE employee_id=%s AND salt='0000' AND password='0000'"
 
     salt = generate_salt()
@@ -65,6 +85,12 @@ def insert_login_info(employee_id, password):
 
 
 def fetch_salt(employee_id):
+    """
+    従業員IDからソルトを取得する。
+    初回ログインかどうかを判別するため(初回の場合'0000')
+    :param employee_id:
+    :return:
+    """
     sql = 'SELECT salt FROM employees WHERE employee_id = %s'
 
     try:
@@ -87,6 +113,10 @@ def fetch_salt(employee_id):
 
 
 def fetch_all_employees():
+    """
+    全ての従業員情報を取得する
+    :return:
+    """
     sql = """
         SELECT employee_id, employees.name, departments.name, roles.name FROM employees 
         LEFT OUTER JOIN departments ON employees.department_id=departments.department_id
@@ -108,6 +138,11 @@ def fetch_all_employees():
 
 
 def fetch_employees_by_department(department_id):
+    """
+    部署ごとの従業員情報を取得する
+    :param department_id:
+    :return:
+    """
     sql = """
             SELECT employee_id, employees.name, departments.name, roles.name FROM employees 
             LEFT OUTER JOIN departments ON employees.department_id=departments.department_id
@@ -129,6 +164,10 @@ def fetch_employees_by_department(department_id):
 
 # 部門一覧を取ってくる
 def fetch_departments():
+    """
+    全ての部署IDと部署名を取得する
+    :return:
+    """
     sql = "SELECT * FROM departments"
     try:
         connection = get_connection()
@@ -146,6 +185,10 @@ def fetch_departments():
 
 # 役職一覧を取ってくる
 def fetch_roles():
+    """
+    全ての役職IDと役職名を取得する
+    :return:
+    """
     sql = "SELECT * FROM roles"
     try:
         connection = get_connection()
@@ -163,6 +206,12 @@ def fetch_roles():
 
 
 def employee_login(employee_id, password):
+    """
+    従業員ログインを行う
+    :param employee_id:
+    :param password:
+    :return:
+    """
     sql = 'SELECT password, salt FROM employees WHERE employee_id = %s'
     flg = False
 
