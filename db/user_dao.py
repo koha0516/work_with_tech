@@ -8,7 +8,7 @@ def get_connection():
     url = os.environ['DATABASE_URL']
     connection = psycopg2.connect(url)
     return connection
-# 従業員を登録する
+
 def register_employee(employee):
     """
     DBに対して従業員の登録を行う
