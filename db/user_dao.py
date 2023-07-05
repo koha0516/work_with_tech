@@ -263,3 +263,35 @@ def register_admin(admin_id, employee_id, password):
         connection.close()
 
     return count
+
+
+def admin_login(admin_id, password):
+    """
+    従業員ログインを行う
+    :param employee_id:
+    :param password:
+    :return:
+    """
+    sql = 'SELECT password, salt FROM admin WHERE admin_id = %s'
+    flg = False
+
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute(sql, (admin_id,))
+        admin = cursor.fetchone()
+
+        if admin != None:
+            salt = admin[1]
+
+            hashed_password = get_hash(password, salt)
+
+            if hashed_password == admin[0]:
+                flg = True
+    except psycopg2.DatabaseError:
+        flg = False
+    finally:
+        cursor.close()
+        connection.close()
+
+    return flg

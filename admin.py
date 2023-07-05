@@ -11,6 +11,21 @@ def admin_login_form():
     """
     return render_template('admin/login.html')
 
+
+@admin_bp.route('/login-exe', methods=['POST'])
+def admin_login_exe():
+    """
+    ログイン処理を実行する
+    """
+    admin_id = request.form.get('admin_id')
+    password = request.form.get('password')
+    if user_dao.admin_login(admin_id, password):
+        session['admin'] = True
+        return redirect(url_for('admin.admin_menu'))
+    else:
+        msg='ログイン出来ませんでした'
+        return redirect(url_for('admin.admin_login_form', msg=msg))
+
 @admin_bp.route('/sign-up')
 def admin_sign_up_form():
     """
