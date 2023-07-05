@@ -75,9 +75,9 @@ CREATE TABLE work_time
     employee_id     varchar(64) not null,
     working_date    date not null,
     begin           time not null default '00:00',
-    finish          time not null default '00:00',
-    b_rest         time not null default '00:00',
-    f_rest         time not null default '00:00',
+    finish          time default '00:00',
+    b_rest         time default '00:00',
+    f_rest         time default '00:00',
     primary key (employee_id, working_date)
 );
 
