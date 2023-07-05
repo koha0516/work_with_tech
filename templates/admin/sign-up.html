@@ -3,8 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/admin_style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/admin_sign_up.css')}}">
 </head>
 <body>
-
+<header>
+  <h1 id="header_title">work_with_tech</h1>
+</header>
+  <div class="contents">
+    <form action="{{ url_for('admin.admin_sign_up_exe') }}" method="get">
+      <h2 id="form-title">Login</h2>
+      <div class="input_box">
+        <span class="input_label">Admin_ID</span><br>
+        <input type="text" name="admin_id"><br>
+      </div>
+      <div class="input_box">
+        <span class="input_label">Employee_ID</span><br>
+        <input type="text" name="employee_id"><br>
+      </div>
+      <div class="input_box">
+        <span class="input_label">PASSWORD</span><br>
+        <input type="text" name="password1"><br>
+      </div>
+      <div class="input_box">
+        <span class="input_label">※Reenter_PASSWORD</span><br>
+      <input type="text" name="password2"><br>
+      </div>
+      <button id="submit_button" type="submit">Sign_Up</button>
+      <a href="{{ url_for('admin.admin_login_form') }}" class="small_rink">Login</a>
+    </form>
+  </div>
 </body>
 </html>

@@ -11,6 +11,20 @@ def admin_login_form():
     """
     return render_template('admin/login.html')
 
+@admin_bp.route('/sign-up')
+def admin_sign_up_form():
+    """
+    管理者登録画面を表示する
+    """
+    return render_template('admin/sign-up.html')
+
+@admin_bp.route('/sign-up-exe')
+def admin_sign_up_exe():
+    """
+    管理者登録画面を表示する
+    """
+    return redirect(url_for('admin.admin_menu'))
+
 @admin_bp.route('/apply')
 def admin_apply():
     """
