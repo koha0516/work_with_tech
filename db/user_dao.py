@@ -9,6 +9,7 @@ def get_connection():
     connection = psycopg2.connect(url)
     return connection
 
+
 def register_employee(employee):
     """
     DBに対して従業員の登録を行う
@@ -235,3 +236,30 @@ def employee_login(employee_id, password):
         connection.close()
 
     return flg
+
+
+def register_admin(admin_id, employee_id, password):
+    """
+    DBに対して管理者の登録を行う
+    :param employee:
+    :return:
+    """
+    sql = f"""INSERT INTO admin VALUES (%s, %s, %s, %s, 1, CURRENT_TIMESTAMP(0))"""
+
+    salt = generate_salt()
+    hashed_pw = get_hash(password, salt)
+
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+#
+        cursor.execute(sql, (admin_id, employee_id, salt, hashed_pw))
+        count = cursor.rowcount
+        connection.commit()
+    except:
+        count = 0
+    finally:
+        cursor.close()
+        connection.close()
+
+    return count

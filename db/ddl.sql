@@ -69,6 +69,17 @@ CREATE TABLE employees
     unique (employee_id)
 );
 
+CREATE TABLE admin
+(
+    admin_id        varchar(64) not null,
+    employee_id     varchar(64) not null,
+    salt            varchar(64) not null,
+    password        varchar(64) not null,
+    flg             int not null ,
+    create_at       timestamp,
+    primary key (admin_id)
+);
+
 
 CREATE TABLE work_time
 (

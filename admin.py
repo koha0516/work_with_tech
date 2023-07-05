@@ -18,12 +18,27 @@ def admin_sign_up_form():
     """
     return render_template('admin/sign-up.html')
 
-@admin_bp.route('/sign-up-exe')
+@admin_bp.route('/sign-up-exe', methods=['POST'])
 def admin_sign_up_exe():
     """
-    管理者登録画面を表示する
+    管理者登録処理を実行する
     """
-    return redirect(url_for('admin.admin_menu'))
+    # セッションから値を受け取る
+    admin_id = request.form.get('admin_id')
+    employee_id = request.form.get('employee_id')
+    password1 = request.form.get('password1')
+    password2 = request.form.get('password2')
+    if password1 != password2:
+        msg = 'パスワードに誤りがあります'
+        return render_template('admin/sign-up.html', msg=msg)
+    print(admin_id, employee_id, password1)
+    if user_dao.register_admin(admin_id, employee_id, password1):
+        session['admin'] = True
+        return redirect(url_for('admin.admin_menu'))
+    else:
+        msg = '登録に失敗しました'
+        return redirect(url_for('admin.admin_sign_up_form', msg=msg))
+
 
 @admin_bp.route('/apply')
 def admin_apply():
@@ -97,6 +112,7 @@ def register_employee_exe():
     print(employee)
     if user_dao.register_employee(employee):
         session.pop('employee', None)
+        session['user'] = True
         return redirect(url_for('admin.register_employee_complete'))
     else:
         msg = '登録に失敗しました'

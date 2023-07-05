@@ -32,7 +32,7 @@ form {
   font-size: 20px;
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
   width: 280px;
   height: 26px;
   border: 1px solid;
