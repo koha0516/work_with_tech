@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
 from db import user_dao
+from function.gen_qrcode import gen_qr
+from function.gen_employee_card import gen_employee_card
 import random
 
 admin_bp = Blueprint('admin', __name__, url_prefix='/admin')
@@ -127,6 +129,12 @@ def register_employee_exe():
     print(employee)
     if user_dao.register_employee(employee):
         session.pop('employee', None)
+
+        # 社員証を生成する
+        gen_qr(employee_id)
+        emp = (employee_id, name)
+        gen_employee_card(emp, '/QR011112018.png')
+
         session['user'] = True
         return redirect(url_for('admin.register_employee_complete'))
     else:

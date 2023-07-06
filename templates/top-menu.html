@@ -25,11 +25,15 @@
   </div>
   <div class="lower_contents">
     <div class="lower_left_contents">
-      <button id="begin_button">Begin</button>
+      <a href="{{ url_for('employee.punch_a_beginning_time') }}">
+        <button id="begin_button">Begin</button>
+      </a>
       <button id="bgn_rest_button">Bgn_rest</button>
     </div>
     <div class="lower_right_contents">
+      <a href="{{ url_for('employee.punch_a_finish_time') }}">
       <button id="finish_button">Finish</button>
+      </a>
       <button id="fin_rest_button">Fin_rest</button>
     </div>
   </div>

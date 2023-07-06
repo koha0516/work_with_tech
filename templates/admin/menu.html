@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/admin_style.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/admin_menu.css')}}">
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/normalize.css') }}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/admin_style.css') }}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/admin_menu.css') }}">
 </head>
 <body>
 <header>
-    <h1 id="header_title">work_with_tech</h1>
+  <h1 id="header_title">work_with_tech</h1>
 </header>
 <div class="contents">
-    <div class="main_contents">
-        <div id="menu-title">Menu</div>
-        <div id="menu">
-            <div class="left_contents">
-                <div class="menu_list"><a href="#">Employee</a></div>
-                <div class="menu_list"><a href="#">Apply</a></div>
-            </div>
-            <div class="right_contents">
-                <div class="menu_list"><a href="#">Reports</a></div>
-                <div class="menu_list"><a href="#">Payroll</a></div>
-            </div>
-        </div>
+  <div class="main_contents">
+    <div id="menu-title">Menu</div>
+    <div id="menu">
+      <div class="left_contents">
+        <div class="menu_list"><a
+            href="{{ url_for('admin.admin_employee_list') }}">Employee</a></div>
+        <div class="menu_list"><a href="#">Apply</a></div>
+        <div class="menu_list"><a href="{{ url_for('admin.register_employee_form') }}">Register</a></div>
+      </div>
+      <div class="right_contents">
+        <div class="menu_list"><a href="#">Reports</a></div>
+        <div class="menu_list"><a href="#">Payroll</a></div>
+      </div>
     </div>
-    <aside>
-        <ul>
-            <li class="nav_list"><a href="#">Menu</a></li>
-            <li class="nav_list"><a href="#">Employee</a></li>
-            <li class="nav_list"><a href="#">Apply</a></li>
-            <li class="nav_list"><a href="#">Reports</a></li>
-            <li class="nav_list"><a href="#">Payroll</a></li>
-        </ul>
-    </aside>
+  </div>
+  <aside>
+    <ul>
+      <li class="nav_list"><a href="#">Menu</a></li>
+      <li class="nav_list"><a href="#">Employee</a></li>
+      <li class="nav_list"><a href="#">Apply</a></li>
+      <li class="nav_list"><a href="#">Reports</a></li>
+      <li class="nav_list"><a href="#">Payroll</a></li>
+    </ul>
+  </aside>
 </div>
 </body>
 </html>

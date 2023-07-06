@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, redirect, request, url_for, session
-from db import user_dao
+from db import user_dao, work_dao
+from function.read_qrcode import read_qrcode
+from datetime import datetime
 
 employee_bp = Blueprint('employee', __name__, url_prefix='/employee')
 
@@ -75,3 +77,24 @@ def insert_login_info_exe():
     else:
         msg = '登録に失敗しました'
         return redirect(url_for('employee.insert_login_info_form', msg=msg))
+
+
+@employee_bp.route('/begin')
+def punch_a_beginning_time():
+    employee_id = read_qrcode()
+    today = datetime.today().date()
+
+    if work_dao.insert_bgn(employee_id, today):
+        return redirect(url_for('top_menu', msg='出勤時刻を記録しました'))
+    else:
+        return redirect(url_for('top_menu', msg='打刻できませんでした'))
+
+@employee_bp.route('/finish')
+def punch_a_finish_time():
+    employee_id = read_qrcode()
+    today = datetime.today().date()
+
+    if work_dao.insert_fin(employee_id, today):
+        return redirect(url_for('top_menu', msg='退勤時刻を記録しました'))
+    else:
+        return redirect(url_for('top_menu', msg='打刻できませんでした'))
