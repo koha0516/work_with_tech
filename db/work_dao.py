@@ -54,21 +54,47 @@ def insert_fin(employee_id, date):
 
     return count
 
+def insert_rest_bgn(employee_id, date):
+    now = datetime.now()
+    now_time = now.strftime("%H:%M")
+    print(now_time, employee_id, date)
+
+    sql = "UPDATE work_time SET b_rest=%s WHERE employee_id=%s AND working_date=%s"
+
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute(sql, (now_time, employee_id, date))
+        count = cursor.rowcount
+        connection.commit()
+    except:
+        count = 0
+    finally:
+        cursor.close()
+        connection.close()
+
+    return count
 
 
-def insert_bgn_rest(employee_id, date):
-    pass
+def insert_rest_fin(employee_id, date):
+    now = datetime.now()
+    now_time = now.strftime("%H:%M")
+    print(now_time, employee_id, date)
 
+    sql = "UPDATE work_time SET f_rest=%s WHERE employee_id=%s AND working_date=%s"
 
-def insert_fin_rest(employee_id, date):
-    pass
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute(sql, (now_time, employee_id, date))
+        count = cursor.rowcount
+        connection.commit()
+    except:
+        count = 0
+    finally:
+        cursor.close()
+        connection.close()
 
-
-def insert_holiday(employee_id, date):
-    pass
-
-
-def insert_overtime(employee_id, date):
-    pass
+    return count
 
 

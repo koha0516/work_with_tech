@@ -98,3 +98,32 @@ def punch_a_finish_time():
         return redirect(url_for('top_menu', msg='退勤時刻を記録しました'))
     else:
         return redirect(url_for('top_menu', msg='打刻できませんでした'))
+
+
+@employee_bp.route('/begin-rest')
+def bgn_rest():
+    employee_id = read_qrcode()
+    today = datetime.today().date()
+
+    if work_dao.insert_rest_bgn(employee_id, today):
+        return redirect(url_for('top_menu', msg='休憩開始'))
+    else:
+        return redirect(url_for('top_menu', msg='打刻できませんでした'))
+
+
+@employee_bp.route('/finish-rest')
+def fin_rest():
+    employee_id = read_qrcode()
+    today = datetime.today().date()
+
+    if work_dao.insert_rest_fin(employee_id, today):
+        return redirect(url_for('top_menu', msg='休憩終了'))
+    else:
+        return redirect(url_for('top_menu', msg='打刻できませんでした'))
+
+
+@employee_bp.route('/schedule')
+def schedule():
+    employee_id = read_qrcode()
+    today = datetime.today().date()
+
