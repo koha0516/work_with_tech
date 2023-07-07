@@ -127,3 +127,10 @@ def schedule():
     employee_id = read_qrcode()
     today = datetime.today().date()
 
+
+@employee_bp.route('/overtime-apply')
+def overtime_apply():
+    """
+    残業申請画面を表示する
+    """
+    return render_template('employee/employee-apply.html')
