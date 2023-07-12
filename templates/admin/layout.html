@@ -2,19 +2,49 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
-  <link rel="stylesheet" href="{{url_for('static', filename='css/admin_style.css')}}">
+
+
+  <title>{% block title %} {# ページタイトル #} {% endblock %}</title>
+
+
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/normalize.css') }}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/admin_style.css') }}">
+
+
   {% block css %}
-  <!-- 独自のcssを埋め込む -->
+    {# 独自のcssを埋め込む #}
   {% endblock %}
+
+
 </head>
 <body>
-<header>
-  <h1 id="header_title">work_with_tech</h1>
-</header>
+
+  <header>
+    <h1 id="header_title">work_with_tech</h1>
+  </header>
+  <div class="contents">
+
+
   {% block main_contents %}
-  <!-- ページのメインコンテンツを埋め込む -->
+    {# ページのメインコンテンツを埋め込む #}
   {% endblock %}
+
+
+  <aside>
+    <ul>
+      <li class="nav_list"><a href="{{ url_for('admin.admin_menu') }}">Menu</a>
+      </li>
+      <li class="nav_list"><a href="{{ url_for('admin.admin_employee_list') }}">Employee</a>
+      </li>
+      <li class="nav_list"><a href="#">Apply</a></li>
+      <li class="nav_list"><a href="#">Reports</a></li>
+      <li class="nav_list"><a href="#">Payroll</a></li>
+    </ul>
+  </aside>
+
+  </div>
+
 </body>
 </html>

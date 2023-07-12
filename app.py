@@ -15,7 +15,7 @@ def top_menu():
     """
     ログイン前トップメニューに戻る。
     """
-    return render_template('top-menu.html')
+    return render_template('top-menu.html', title="トップメニュー")
 
 def logout():
     """

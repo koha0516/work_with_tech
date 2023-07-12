@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/schedule.css')}}">
+</head>
+<body>
+<header>
+  <h1 id="header_title">work_with_tech</h1>
+</header>
+<div class="contents">
+  <div class="main_contents">
+    <div id="classify">
+      <div id="departments">
+        <div class="classify_title">belong_to</div>
+        <ul class="cl_list">
+          {% for de in departments %}
+          <li class="department"><a href="{{ url_for('admin.admin_employee_list', department_id=de[0]) }}">{{ de[1] }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div id="positions">
+        <div class="classify_title">position</div>
+        <ul class="cl_list">
+          <li class="position"><a>パート</a></li>
+          <li class="position"><a>派遣</a></li>
+          <li class="position"><a>正社員</a></li>
+          <li class="position"><a>管理職</a></li>
+          <li class="position"><a>その他</a></li>
+        </ul>
+      </div>
+<!--      <div id="search">-->
+<!--        <form action="#" method="get">-->
+<!--          <input type="text" name="search"><br>-->
+<!--          <button type="submit">検索マーク</button>-->
+<!--        </form>-->
+<!--      </div>-->
+    </div>
+    <div id="employees">
+      <div id="title">従業員リスト</div>
+      <button id="back_to_home">Back</button>
+
+      <table>
+        <tr>
+          <th>社員ID</th>
+          <th>名前</th>
+          <th>所属</th>
+          <th>役職</th>
+          <th>備考</th>
+        </tr>
+        {% for emp in employees %}
+        <tr>
+            <td>{{ emp[0] }}</td>
+            <td>{{ emp[1] }}</td>
+            <td>{{ emp[2] }}</td>
+            <td>{{ emp[3] }}</td>
+            <td id="remarks">あとでemp[4]</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  <aside>
+    <ul>
+      <li class="nav_list"><a>Menu</a></li>
+      <li class="nav_list"><a>Employee</a></li>
+      <li class="nav_list"><a>Apply</a></li>
+      <li class="nav_list"><a>Reports</a></li>
+      <li class="nav_list"><a>Payroll</a></li>
+    </ul>
+  </aside>
+</div>
+
+</body>
+</html>

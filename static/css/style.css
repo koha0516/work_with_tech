@@ -33,6 +33,13 @@ header {
   color: #F7F7F7;
 }
 
+#admin_login {
+   font-size: 20px;
+  color: #232423;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
 
 .small_rink{
   position: absolute;

@@ -1,0 +1,102 @@
+.contents {
+    display: grid;
+    grid-template-columns: auto 120px;
+}
+
+.main_contents {
+    font-family: 'Zen Maru Gothic';
+    color: #232423;
+    display: grid;
+    grid-template-columns: 150px auto;
+}
+
+#classify{
+    font-family: "BIZ UDゴシック";
+    color: black;
+    font-size: 20px;
+}
+
+.cl_list {
+    margin-bottom: 40px;
+}
+.department {
+    padding-top: 5px;
+    margin-bottom: 5px;
+    border-top: black 1px solid;
+}
+.position {
+    padding-top: 5px;
+    margin-bottom: 5px;
+    border-top: black 1px solid;
+}
+
+.classify_title {
+    color: #4BE6C1;
+    font-family: 'Hyperspace Race Capsule';
+}
+
+#employees {
+    margin: 20px auto auto 50px;
+    position: relative;
+    text-align: center;
+    width: 920px;
+    height: 545px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+#title{
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+#back_to_home {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+
+    width: 160px;
+    height: 40px;
+    border-radius: 20px;
+
+    font-size: 24px;
+    font-family: 'Hyperspace Race Capsule';
+    background-image: linear-gradient(150deg, rgba(145, 255, 201, 1), rgba(77, 179, 210, 1) 58%, rgba(74, 10, 249, 1));
+    transition: all .2s;
+}
+
+#back_to_home:hover {
+    position: absolute;
+    right: 20px;
+    top: 7px;
+    box-shadow: 0 2px 3px rgba(11, 99, 87, 0.85);
+}
+
+table,th,td {
+    margin: 20px auto auto;
+    border: #232423 1px solid;
+    font-family: 'Zen Maru Gothic';
+}
+th {
+    height: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: #232423 2px solid;
+}
+
+table {
+    width: 800px;
+    border: #232423 2px solid;
+    border-collapse: collapse;
+}
+
+#remarks {
+    font-size: 0.75rem;
+}
+
+ul {
+    padding-left:0;
+}
+
+li {
+    list-style: none;
+}

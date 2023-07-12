@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>{{ title }}</title>
   <link rel="stylesheet"
         href="{{ url_for('static', filename='css/normalize.css') }}">
   <link rel="stylesheet"
@@ -13,7 +13,7 @@
 <body>
 <header>
   <h1 id="header_title">work_with_tech</h1>
-  <a href="{{ url_for('admin.admin_login_form') }}">admin</a>
+  <a id="admin_login" href="{{ url_for('admin.admin_login_form') }}">admin</a>
 </header>
 <div class="contents">
   <div class="upper_contents">

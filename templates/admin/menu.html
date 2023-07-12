@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="stylesheet"
-        href="{{ url_for('static', filename='css/normalize.css') }}">
-  <link rel="stylesheet"
-        href="{{ url_for('static', filename='css/admin_style.css') }}">
-  <link rel="stylesheet"
-        href="{{ url_for('static', filename='css/admin_menu.css') }}">
-</head>
-<body>
-<header>
-  <h1 id="header_title">work_with_tech</h1>
-</header>
-<div class="contents">
+{% extends "admin/layout.html" %}
+
+{% block title %}
+  {# ページタイトル #}
+  管理者メニュー
+{% endblock %}
+
+{% block css %}
+  {# 独自のcssを埋め込む #}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_menu.css') }}">
+{% endblock %}
+
+{% block main_contents %}
+  {# ページのコンテンツを埋め込む #}
   <div class="main_contents">
     <div id="menu-title">Menu</div>
     <div id="menu">
@@ -30,15 +27,5 @@
       </div>
     </div>
   </div>
-  <aside>
-    <ul>
-      <li class="nav_list"><a href="#">Menu</a></li>
-      <li class="nav_list"><a href="#">Employee</a></li>
-      <li class="nav_list"><a href="#">Apply</a></li>
-      <li class="nav_list"><a href="#">Reports</a></li>
-      <li class="nav_list"><a href="#">Payroll</a></li>
-    </ul>
-  </aside>
-</div>
-</body>
-</html>
+
+  {% endblock %}
