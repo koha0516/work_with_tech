@@ -1,7 +1,11 @@
+import calendar
+
 from flask import Blueprint, render_template, redirect, request, url_for, session
 from db import user_dao, work_dao
 from function.read_qrcode import read_qrcode
-from datetime import datetime
+from datetime import datetime, date
+from dateutil.relativedelta import relativedelta
+from function import date_util_fn
 
 employee_bp = Blueprint('employee', __name__, url_prefix='/employee')
 
@@ -28,6 +32,7 @@ def login_exe():
     else:
         if user_dao.employee_login(employee_id, password):
             session['user'] = True
+            session['employee_id'] = employee_id
             return redirect(url_for('employee.employee_menu'))
         else:
             return redirect(url_for('employee_login_form'))
@@ -135,4 +140,22 @@ def schedule():
     """
     スケジュールを表示する
     """
-    return render_template('employee/schedule.html')
+    today = date.today()
+    f = today.strftime('%Y-%m') + '-01'
+    first = date.fromisoformat(f)
+
+    w, d = calendar.monthrange(today.year, today.month)
+    days = []
+
+    for i in range(d):
+        week_day = first.weekday()
+        str_week_day = date_util_fn.day_of_week(week_day)
+        str_date = first.strftime('%Y-%m-%d')
+        days.append([str_week_day, str_date])
+        first = first + relativedelta(days=1)
+
+    employee_id = session['employee_id']
+    # work_days = work_dao.fetch_work_times(employee_id,f, today.strftime('%Y-%m-%d'))
+
+    # 曜日を表す数値と、一か月分の日付を表すstr型リストを送る
+    return render_template('employee/schedule.html', day = w, days = days) #work_days=work_days
