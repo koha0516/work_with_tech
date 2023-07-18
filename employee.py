@@ -146,16 +146,25 @@ def schedule():
 
     w, d = calendar.monthrange(today.year, today.month)
     days = []
+    employee_id = session['employee_id']
+    shifts = work_dao.fetch_employee_shifts(employee_id)
+    shifts.append("a")
+    print(shifts)
 
+    index=0
     for i in range(d):
         week_day = first.weekday()
         str_week_day = date_util_fn.day_of_week(week_day)
         str_date = first.strftime('%Y-%m-%d')
-        days.append([str_week_day, str_date])
+        if first == shifts[index][0]:
+
+            rest =  datetime.combine(date.today(), shifts[index][4]) - datetime.combine(date.today(), shifts[index][3])
+            days.append([str_week_day, str_date, shifts[index][1], shifts[index][2], rest])
+            index += 1
+        else:
+            days.append([str_week_day, str_date,"","",""])
         first = first + relativedelta(days=1)
 
-    employee_id = session['employee_id']
-    # work_days = work_dao.fetch_work_times(employee_id,f, today.strftime('%Y-%m-%d'))
-
+    print(days)
     # 曜日を表す数値と、一か月分の日付を表すstr型リストを送る
-    return render_template('employee/schedule.html', day = w, days = days) #work_days=work_days
+    return render_template('employee/schedule.html', days = days) #work_days=work_days

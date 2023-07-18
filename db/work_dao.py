@@ -12,7 +12,9 @@ def get_connection():
 
 
 def insert_bgn(employee_id, date):
-
+    """
+        出勤時刻を入力
+    """
     now = datetime.now()
     now_time = now.strftime("%H:%M")
     print(now_time)
@@ -34,6 +36,9 @@ def insert_bgn(employee_id, date):
     return count
 
 def insert_fin(employee_id, date):
+    """
+        退勤時刻を入力
+    """
     now = datetime.now()
     now_time = now.strftime("%H:%M")
     print(now_time, employee_id, date)
@@ -55,6 +60,9 @@ def insert_fin(employee_id, date):
     return count
 
 def insert_rest_bgn(employee_id, date):
+    """
+        休憩開始時刻を入力
+    """
     now = datetime.now()
     now_time = now.strftime("%H:%M")
     print(now_time, employee_id, date)
@@ -77,6 +85,9 @@ def insert_rest_bgn(employee_id, date):
 
 
 def insert_rest_fin(employee_id, date):
+    """
+        休憩終了時刻を入力
+    """
     now = datetime.now()
     now_time = now.strftime("%H:%M")
     print(now_time, employee_id, date)
@@ -96,5 +107,27 @@ def insert_rest_fin(employee_id, date):
         connection.close()
 
     return count
+
+def fetch_employee_shifts(employee_id):
+    """
+    全ての勤怠情報を取得する
+    :return:
+    """
+    sql = """
+        SELECT working_date, begin, finish, b_rest, f_rest FROM work_time WHERE employee_id=%s
+        """
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+
+        cursor.execute(sql, (employee_id,))
+        work_time = cursor.fetchall()
+    except:
+        return None
+    finally:
+        cursor.close()
+        connection.close()
+
+    return work_time
 
 

@@ -37,11 +37,9 @@
         </tr>
         {% for day in days %}
         <tr>
-            <td>{{ day[0] }}</td>
-            <td>{{ day[1] }}</td>
-            <td>wd[0]</td>
-            <td>wd[1]</td>
-            <td>wd[2]</td>
+          {% for d in day %}
+            <td>{{ d }}</td>
+          {% endfor %}
         </tr>
         {% endfor %}
       </table>
