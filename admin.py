@@ -6,13 +6,14 @@ import random
 
 admin_bp = Blueprint('admin', __name__, url_prefix='/admin')
 
+
+# ---------- ログイン機能 --------------
 @admin_bp.route('/login')
 def admin_login_form():
     """
     ログインフォーム画面を表示する
     """
     return render_template('admin/login.html')
-
 
 @admin_bp.route('/login-exe', methods=['POST'])
 def admin_login_exe():
@@ -28,6 +29,8 @@ def admin_login_exe():
         msg='ログイン出来ませんでした'
         return redirect(url_for('admin.admin_login_form', msg=msg))
 
+
+# ---------- ユーザ登録・編集機能 --------------
 @admin_bp.route('/sign-up')
 def admin_sign_up_form():
     """
@@ -55,34 +58,6 @@ def admin_sign_up_exe():
     else:
         msg = '登録に失敗しました'
         return redirect(url_for('admin.admin_sign_up_form', msg=msg))
-
-
-@admin_bp.route('/apply')
-def admin_apply():
-    """
-    残業申請画面を表示する
-    """
-    return render_template('admin/apply.html')
-
-@admin_bp.route('/menu')
-def admin_menu():
-    """
-    管理者用メニュー画面を表示する
-    """
-    return render_template('admin/menu.html')
-
-@admin_bp.route('/employee-list')
-def admin_employee_list():
-    """
-    従業員一覧画面を表示する
-    """
-    d_id = request.args.get('department_id')
-    if d_id:
-        employees = user_dao.fetch_employees_by_department(d_id)
-    else:
-        employees = user_dao.fetch_all_employees()
-    departments = user_dao.fetch_departments()
-    return render_template('admin/employee-list.html', employees=employees, departments = departments)
 
 @admin_bp.route('register_employee_form')
 def register_employee_form():
@@ -147,3 +122,36 @@ def register_employee_complete():
     従業員登録完了画面を表示する
     """
     return render_template('admin/register-employee-complete.html')
+
+
+# ---------- 残業申請機能 --------------
+@admin_bp.route('/apply')
+def admin_apply():
+    """
+    残業申請画面を表示する
+    """
+    return render_template('admin/apply.html')
+
+
+# ---------- 管理者メニュー表示機能 --------------
+@admin_bp.route('/menu')
+def admin_menu():
+    """
+    管理者用メニュー画面を表示する
+    """
+    return render_template('admin/menu.html')
+
+
+# ---------- 従業員一覧機能 --------------
+@admin_bp.route('/employee-list')
+def admin_employee_list():
+    """
+    従業員一覧画面を表示する
+    """
+    d_id = request.args.get('department_id')
+    if d_id:
+        employees = user_dao.fetch_employees_by_department(d_id)
+    else:
+        employees = user_dao.fetch_all_employees()
+    departments = user_dao.fetch_departments()
+    return render_template('admin/employee-list.html', employees=employees, departments = departments)

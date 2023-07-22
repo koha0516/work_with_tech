@@ -17,6 +17,7 @@
       <div id="departments">
         <div class="classify_title">belong_to</div>
         <ul class="cl_list">
+          <li class="department"><a href="{{ url_for('admin.admin_employee_list') }}">すべての従業員</a></li>
           {% for de in departments %}
           <li class="department"><a href="{{ url_for('admin.admin_employee_list', department_id=de[0]) }}">{{ de[1] }}</a></li>
           {% endfor %}
@@ -41,7 +42,6 @@
     </div>
     <div id="employees">
       <div id="title">従業員リスト</div>
-      <button id="back_to_home">Back</button>
 
       <table>
         <tr>

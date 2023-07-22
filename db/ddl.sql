@@ -95,14 +95,18 @@ CREATE TABLE work_time
 
 CREATE TABLE over_time
 (
+    id              serial,
     employee_id     varchar(64) not null,
     working_date    date not null,
     o_time          time not null default'00:00',
+    work_contents   varchar(512) not null,
+    reason          varchar(512) not null,
     primary key (employee_id, working_date)
 );
 
 CREATE TABLE holiday
 (
+    id              serial,
     employee_id     varchar(64) not null,
     holiday         date not null,
     start_period    date not null,

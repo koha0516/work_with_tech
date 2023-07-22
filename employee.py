@@ -9,8 +9,10 @@ from function import date_util_fn
 
 employee_bp = Blueprint('employee', __name__, url_prefix='/employee')
 
+
+# ---------- ログイン・ログイン情報編集機能 --------------
 @employee_bp.route('/login')
-def employee_login_form():
+def login_form():
     """
     ログイン画面を表示する
     """
@@ -20,14 +22,14 @@ def employee_login_form():
 def login_exe():
     """
     フォームの値を受取り、ログイン処理を実行する。
-    ただし、パスワードが'0000'の場合は
+    ただし、入力されたパスワードが'0000'の場合は
     パスワード設定画面に遷移する 。
     """
     employee_id = request.form.get('employee_id')
     password = request.form.get('password')
     session['employee_id'] = employee_id
 
-    if password == '0000':
+    if password == '0000' and user_dao.fetch_salt(employee_id) == '0000':
         return redirect(url_for('employee.insert_login_info_form'))
     else:
         if user_dao.employee_login(employee_id, password):
@@ -35,15 +37,7 @@ def login_exe():
             session['employee_id'] = employee_id
             return redirect(url_for('employee.employee_menu'))
         else:
-            return redirect(url_for('employee_login_form'))
-
-
-@employee_bp.route('/menu')
-def employee_menu():
-    """
-    従業員メニュー画面に移行する。
-    """
-    return render_template('employee/menu.html')
+            return redirect(url_for('employee.login_form'))
 
 @employee_bp.route('/edit-password-form')
 def insert_login_info_form():
@@ -84,8 +78,21 @@ def insert_login_info_exe():
         return redirect(url_for('employee.insert_login_info_form', msg=msg))
 
 
+# -------------- 従業員メニュー表示 --------------------
+@employee_bp.route('/menu')
+def employee_menu():
+    """
+    従業員メニュー画面に移行する。
+    """
+    return render_template('employee/menu.html')
+
+
+# ------------------ 勤怠管理 打刻機能 ----------------------
 @employee_bp.route('/begin')
 def punch_a_beginning_time():
+    """
+    出勤時刻を記録する
+    """
     employee_id = read_qrcode()
     today = datetime.today().date()
 
@@ -96,6 +103,9 @@ def punch_a_beginning_time():
 
 @employee_bp.route('/finish')
 def punch_a_finish_time():
+    """
+    退勤時刻を記録する
+    """
     employee_id = read_qrcode()
     today = datetime.today().date()
 
@@ -104,9 +114,11 @@ def punch_a_finish_time():
     else:
         return redirect(url_for('top_menu', msg='打刻できませんでした'))
 
-
 @employee_bp.route('/begin-rest')
 def bgn_rest():
+    """
+    休憩開始時刻を記録する
+    """
     employee_id = read_qrcode()
     today = datetime.today().date()
 
@@ -115,9 +127,11 @@ def bgn_rest():
     else:
         return redirect(url_for('top_menu', msg='打刻できませんでした'))
 
-
 @employee_bp.route('/finish-rest')
 def fin_rest():
+    """
+    休憩終了時刻を記録する
+    """
     employee_id = read_qrcode()
     today = datetime.today().date()
 
@@ -127,6 +141,7 @@ def fin_rest():
         return redirect(url_for('top_menu', msg='打刻できませんでした'))
 
 
+# ------------------ 残業に関する機能 ----------------------
 @employee_bp.route('/overtime-apply')
 def overtime_apply():
     """
@@ -135,6 +150,7 @@ def overtime_apply():
     return render_template('employee/employee-apply.html')
 
 
+# ------------------ スケジュール確認機能 ----------------------
 @employee_bp.route('/schedule')
 def schedule():
     """

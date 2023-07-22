@@ -11,6 +11,7 @@ def get_connection():
     return connection
 
 
+# ---------- 打刻機能 --------------
 def insert_bgn(employee_id, date):
     """
         出勤時刻を入力
@@ -83,7 +84,6 @@ def insert_rest_bgn(employee_id, date):
 
     return count
 
-
 def insert_rest_fin(employee_id, date):
     """
         休憩終了時刻を入力
@@ -108,6 +108,8 @@ def insert_rest_fin(employee_id, date):
 
     return count
 
+
+# ---------- スケジュール（勤怠情報）取得 ------------
 def fetch_employee_shifts(employee_id):
     """
     全ての勤怠情報を取得する

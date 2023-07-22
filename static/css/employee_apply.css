@@ -14,7 +14,7 @@
     text-align: center;
 
     width: 920px;
-    height: 545px;
+    height: 530px;
 
     background-color: rgba(255, 255, 255, 0.7);
 }
@@ -131,6 +131,7 @@ textarea:focus {
 
 ul {
     padding-left:0;
+    display:block
 }
 
 li {

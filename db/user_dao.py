@@ -10,11 +10,10 @@ def get_connection():
     return connection
 
 
+# ---------- ユーザ登録・編集機能 --------------
 def register_employee(employee):
     """
     DBに対して従業員の登録を行う
-    :param employee:
-    :return:
     """
     count=0
     sql = f"""INSERT INTO employees (employee_id, name, mail, department_id, role, salt, password, flg, create_at)
@@ -34,8 +33,6 @@ def register_employee(employee):
 
     return count
 
-
-# 従業員のログイン情報を登録する
 def generate_salt():
     """
     ソルトを生成する
@@ -54,6 +51,33 @@ def get_hash(password, salt):
 
     hashed_pw = hashlib.pbkdf2_hmac('sha256', b_pw, b_salt, 1783).hex()
     return hashed_pw
+
+def fetch_salt(employee_id):
+    """
+    従業員IDからソルトを取得する。
+    初回ログインかどうかを判別するため(初回の場合'0000')
+    :param employee_id:
+    :return:
+    """
+    sql = 'SELECT salt FROM employees WHERE employee_id = %s'
+
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute(sql, (employee_id,))
+        user = cursor.fetchone()
+
+        if user != None:
+            print(user)
+            salt = user[0]
+
+    except psycopg2.DatabaseError:
+        salt = 'error'
+    finally:
+        cursor.close()
+        connection.close()
+
+    return salt
 
 def insert_login_info(employee_id, password):
     """
@@ -84,39 +108,100 @@ def insert_login_info(employee_id, password):
 
     return count
 
+def register_admin(admin_id, employee_id, password):
+    """
+    DBに対して管理者の登録を行う
+    :param employee:
+    """
+    sql = f"""INSERT INTO admin VALUES (%s, %s, %s, %s, 1, CURRENT_TIMESTAMP(0))"""
 
-def fetch_salt(employee_id):
+    salt = generate_salt()
+    hashed_pw = get_hash(password, salt)
+
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+#
+        cursor.execute(sql, (admin_id, employee_id, salt, hashed_pw))
+        count = cursor.rowcount
+        connection.commit()
+    except:
+        count = 0
+    finally:
+        cursor.close()
+        connection.close()
+
+    return count
+
+
+# ---------- ログイン機能 --------------
+def employee_login(employee_id, password):
     """
-    従業員IDからソルトを取得する。
-    初回ログインかどうかを判別するため(初回の場合'0000')
+    従業員ログインを行う
     :param employee_id:
-    :return:
+    :param password:
     """
-    sql = 'SELECT salt FROM employees WHERE employee_id = %s'
+    sql = 'SELECT password, salt FROM employees WHERE employee_id = %s'
+    flg = False
 
     try:
         connection = get_connection()
         cursor = connection.cursor()
         cursor.execute(sql, (employee_id,))
-        user = cursor.fetchone()
+        employee = cursor.fetchone()
 
-        if user != None:
-            print(user)
-            salt = user[0]
+        if employee != None:
+            salt = employee[1]
 
+            hashed_password = get_hash(password, salt)
+
+            if hashed_password == employee[0]:
+                flg = True
     except psycopg2.DatabaseError:
-        salt = 'error'
+        flg = False
     finally:
         cursor.close()
         connection.close()
 
-    return salt
+    return flg
+
+def admin_login(admin_id, password):
+    """
+    管理者ログインを行う
+
+    :param employee_id:
+    :param password:
+    """
+    sql = 'SELECT password, salt FROM admin WHERE admin_id = %s'
+    flg = False
+
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute(sql, (admin_id,))
+        admin = cursor.fetchone()
+
+        if admin != None:
+            salt = admin[1]
+
+            hashed_password = get_hash(password, salt)
+
+            if hashed_password == admin[0]:
+                flg = True
+    except psycopg2.DatabaseError:
+        flg = False
+    finally:
+        cursor.close()
+        connection.close()
+
+    return flg
 
 
+
+# ---------- 従業員データ取得 --------------
 def fetch_all_employees():
     """
     全ての従業員情報を取得する
-    :return:
     """
     sql = """
         SELECT employee_id, employees.name, departments.name, roles.name FROM employees 
@@ -136,7 +221,6 @@ def fetch_all_employees():
         connection.close()
 
     return employees
-
 
 def fetch_employees_by_department(department_id):
     """
@@ -163,11 +247,10 @@ def fetch_employees_by_department(department_id):
     return employees
 
 
-# 部門一覧を取ってくる
+# ---------- 部署・役職データ取得 --------------
 def fetch_departments():
     """
     全ての部署IDと部署名を取得する
-    :return:
     """
     sql = "SELECT * FROM departments"
     try:
@@ -184,11 +267,9 @@ def fetch_departments():
 
     return departments
 
-# 役職一覧を取ってくる
 def fetch_roles():
     """
     全ての役職IDと役職名を取得する
-    :return:
     """
     sql = "SELECT * FROM roles"
     try:
@@ -204,94 +285,3 @@ def fetch_roles():
         connection.close()
 
     return roles
-
-
-def employee_login(employee_id, password):
-    """
-    従業員ログインを行う
-    :param employee_id:
-    :param password:
-    :return:
-    """
-    sql = 'SELECT password, salt FROM employees WHERE employee_id = %s'
-    flg = False
-
-    try:
-        connection = get_connection()
-        cursor = connection.cursor()
-        cursor.execute(sql, (employee_id,))
-        employee = cursor.fetchone()
-
-        if employee != None:
-            salt = employee[1]
-
-            hashed_password = get_hash(password, salt)
-
-            if hashed_password == employee[0]:
-                flg = True
-    except psycopg2.DatabaseError:
-        flg = False
-    finally:
-        cursor.close()
-        connection.close()
-
-    return flg
-
-
-def register_admin(admin_id, employee_id, password):
-    """
-    DBに対して管理者の登録を行う
-    :param employee:
-    :return:
-    """
-    sql = f"""INSERT INTO admin VALUES (%s, %s, %s, %s, 1, CURRENT_TIMESTAMP(0))"""
-
-    salt = generate_salt()
-    hashed_pw = get_hash(password, salt)
-
-    try:
-        connection = get_connection()
-        cursor = connection.cursor()
-#
-        cursor.execute(sql, (admin_id, employee_id, salt, hashed_pw))
-        count = cursor.rowcount
-        connection.commit()
-    except:
-        count = 0
-    finally:
-        cursor.close()
-        connection.close()
-
-    return count
-
-
-def admin_login(admin_id, password):
-    """
-    従業員ログインを行う
-    :param employee_id:
-    :param password:
-    :return:
-    """
-    sql = 'SELECT password, salt FROM admin WHERE admin_id = %s'
-    flg = False
-
-    try:
-        connection = get_connection()
-        cursor = connection.cursor()
-        cursor.execute(sql, (admin_id,))
-        admin = cursor.fetchone()
-
-        if admin != None:
-            salt = admin[1]
-
-            hashed_password = get_hash(password, salt)
-
-            if hashed_password == admin[0]:
-                flg = True
-    except psycopg2.DatabaseError:
-        flg = False
-    finally:
-        cursor.close()
-        connection.close()
-
-    return flg
